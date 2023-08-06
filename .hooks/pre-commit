@@ -1,0 +1,21 @@
+#!/bin/bash
+# This script runs pre-commit checks for PHP files using Laravel Pint.
+
+# Get a list of PHP files that have been modified
+files=$(git diff --name-only | grep -E '\.php$')
+
+# If there are no PHP files to check, exit with success status
+if [ "$files" = "" ]; then
+    echo "No PHP files to check"
+    exit 0
+fi
+
+# Check if the Laravel Pint script exists
+if [ ! -f "./vendor/bin/pint" ]; then
+    echo "Laravel Pint script not found"
+    exit 1
+fi
+
+# Run Laravel Pint on the modified PHP files
+echo "Running Laravel Pint"
+./vendor/bin/pint $files && git add $files

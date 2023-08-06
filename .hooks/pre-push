@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# This script run tests before pushing to remote repository
+
+# Run tests
+echo "Running tests"
+./vendor/bin/phpunit
+
+# If tests fail, exit with failure status
+if [ $? -ne 0 ]; then
+    echo "Tests failed"
+    exit 1
+fi
