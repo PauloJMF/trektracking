@@ -18,4 +18,4 @@ fi
 
 # Run Laravel Pint on the modified PHP files
 echo "Running Laravel Pint"
-./vendor/bin/pint $files && git add $files
+./vendor/bin/pint $files
