@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('package_owners', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->references('id')->on('users')->cascadeOnDelete();
             $table->string('name')->nullable();
             $table->string('document')->unique();
             $table->timestamps();
