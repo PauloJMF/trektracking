@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('package_owner_id')->nullable()->references('id')->on('package_owners')->cascadeOnDelete();
-            $table->foreignId('user_id')->nullable()->references('id')->on('users')->cascadeOnDelete();
-            $table->string('tracking_code')->unique();
+            $table->string('tracking_code');
             $table->string('name')->nullable();
             $table->dateTime('delivered_at')->nullable();
             $table->timestamps();
